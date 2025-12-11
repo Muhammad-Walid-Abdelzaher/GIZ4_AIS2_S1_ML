@@ -103,6 +103,7 @@ for char in words_list[1]:
 second_word = "".join(second_word_chars)
 # print(second_word)  # PLEU
 
+# Final Decoded Message
 final_message = first_word + " " + second_word
 print(final_message)  # String PLEU
 
