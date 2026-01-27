@@ -189,13 +189,16 @@ class PasswordGenerator:
 
     def generate_passcode(self):
 
-        chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()"
+        chars = (
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()"
+        )
         password = ""
         for i in range(self.len):
 
             password += random.choice(chars)
 
         return password
+
 
 if __name__ == "__main__":
 

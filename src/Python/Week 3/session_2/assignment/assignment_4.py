@@ -183,7 +183,7 @@ class LongestString:
 
         Returns:
             str: The longest common substring found. Returns an empty string if
-                  no common substring exists
+                 no common substring exists
         """
 
         self.str1 = input("Enter the first sentence: ").strip()
