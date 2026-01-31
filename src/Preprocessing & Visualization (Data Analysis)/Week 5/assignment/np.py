@@ -32,11 +32,41 @@ def array_factory(mode, shape, value=None):
     - 'identity': A square identity matrix of size 'shape'.
     """
 
-    np.zeros(mode)  # Zeros Array
-    np.ones(mode)  # Ones Array
-    np.full(shape=shape, fill_value=value)  # Specific Value Array
-    np.identity(shape)  # Square Identity Array (Matrix)
+    if mode == "zeros":
 
+        return np.zeros(shape)  # Zeros Array
+
+    elif mode == "ones":
+
+        return np.ones(shape)  # Ones Array
+
+    elif mode == "full":
+
+        return np.full(shape=shape, fill_value=value)  # Specific Value Array
+
+    elif mode == "identity":
+
+        return np.identity(shape)  # Square Identity Array (Matrix)
+
+    else:
+
+        raise ValueError(f"Invalid Mode Option: {mode}")
+
+print(array_factory('zeros', (2, 3)))
+
+print("=" * 30)
+
+print(array_factory('ones', (3, 4)))
+
+print("=" * 30)
+
+print(array_factory('full', (4, 5), 'coding'))
+
+print("=" * 30)
+
+print(array_factory('identity', 6))
+
+print("#" * 30)
 
 # Part 2
 # ------
