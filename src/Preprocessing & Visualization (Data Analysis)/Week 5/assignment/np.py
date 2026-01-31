@@ -52,19 +52,22 @@ def array_factory(mode, shape, value=None):
 
         raise ValueError(f"Invalid Mode Option: {mode}")
 
-print(array_factory('zeros', (2, 3)))
+
+print(array_factory("zeros", (2, 3)))
 
 print("=" * 30)
 
-print(array_factory('ones', (3, 4)))
+print(array_factory("ones", (3, 4)))
 
 print("=" * 30)
 
-print(array_factory('full', (4, 5), 'coding'))
+print(array_factory("full", (4, 5), "coding"))
+
+# print(array_factory('empty', (4, 5)))
 
 print("=" * 30)
 
-print(array_factory('identity', 6))
+print(array_factory("identity", 6))
 
 print("#" * 30)
 
@@ -88,7 +91,7 @@ def secure_reshape_and_stack(data1, data2, new_shape):
 
         # Rule: Change the shape of arr1 to new_shape
         # Common usage: turning a vector (1D) into a matrix (2D)  by using reshape function
-        reshaped_arr1 = np.reshape(arr1, shape=new_shape)
+        reshaped_arr1 = arr1.reshape(new_shape)
 
         # Rule: Vertical Stacking (vstack)
         # Requirement: Both matrices must have the same number of columns
@@ -135,7 +138,7 @@ branch_b = [[7, 8, 9], [10, 11, 12]]
 # Reshape A to 2x3 and stack with B
 final_report = secure_reshape_and_stack(branch_a, branch_b, (2, 3))
 print(final_report)
-# Resulting shape: (4, 3)
+# print(final_report.shape)  # Resulting shape: (4, 3)
 
 print("#" * 30)  # Separator
 
