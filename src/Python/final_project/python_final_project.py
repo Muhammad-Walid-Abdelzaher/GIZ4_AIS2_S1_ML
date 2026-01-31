@@ -78,7 +78,7 @@ def bank_account_management(balance: float) -> None:
             print("Invalid Choice.")
 
 
-# bank_account_management(100)
+bank_account_management(100)
 
 print("=" * 50)
 
@@ -222,7 +222,7 @@ class Calculator:
 
 
 calc = Calculator(22, 33)
-# calc.main()
+calc.main()
 
 print("#" * 50)
 
@@ -379,7 +379,7 @@ print(f"No. of lines in file: {reader.count_lines()}")
 print(f"No. of words in file: {reader.count_words()}")
 print(f"No. of chars in file: {reader.count_characters()}")
 print("=" * 30)
-# print(f"File Content: {reader.display_content()}")
+print(f"File Content: {reader.display_content()}")
 
 print("#" * 50)
 
