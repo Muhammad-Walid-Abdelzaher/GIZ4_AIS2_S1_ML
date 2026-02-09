@@ -1,0 +1,14 @@
+# Data Analysis Process:
+# ----------------------
+# 01- Check DataType
+# 02- Handle dtypes
+# 03- Check Nulls
+# 04- Handle Nulls
+# 05- Check Outliers
+# 06- Handle Outliers
+# 07- Check Duplication
+# 08- Handle Duplication
+# 09- Data Visualization
+# 10- Spliting (Data)
+# 11- Normalization
+# 12- Encoding
