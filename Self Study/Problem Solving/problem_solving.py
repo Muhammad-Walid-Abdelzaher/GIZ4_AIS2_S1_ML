@@ -68,6 +68,11 @@ class Solution1:
 
 # The problem with this solution is the "Time Complexity" (n**2) as it loops over the same element twice
 
+# The outer loop runs 'n' times
+# The inner loop runs 'n' times for each outer iteration
+# Total operations: "n * n = n²"
+# O(n²)  # On large scale of inputs (data)
+
 test_1 = Solution1()
 print(test_1.twoSum([2, 7, 11, 15], 9))
 
@@ -92,6 +97,11 @@ class Solution2:
                     return [index_1, index_2]
                     # return [nums[index_1], nums[index_2]]
 
+
+# The outer loop runs 'n' times
+# The inner loop runs (n-1) + (n-2) + ... + 1 = 'n(n-1)/2' times
+# Total operations: "n(n-1)/2"
+# O(n²)  # yes this solution is much more optimized but still the same as the input increases
 
 test_4 = Solution2()
 print(test_4.twoSum([2, 7, 11, 15], 9))
