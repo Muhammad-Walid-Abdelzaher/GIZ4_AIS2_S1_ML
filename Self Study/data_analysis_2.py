@@ -5,9 +5,7 @@
 import os
 
 # Change The Current Working Directory
-os.chdir(
-    r"C:\Users\Muhammad Walid\Python\DEPI\GIZ4_AIS2_S1_ML\GIZ4_AIS2_S1_ML\Self Study"
-)
+os.chdir(r"C:\Users\Muhammad Walid\Python\DEPI\GIZ4_AIS2_S1_ML\GIZ4_AIS2_S1_ML\Self Study")
 # print(os.getcwd())
 
 data_path = r"C:\Users\Muhammad Walid\Python\DEPI\GIZ4_AIS2_S1_ML\GIZ4_AIS2_S1_ML\Self Study\train.csv"
@@ -180,7 +178,7 @@ plt.figure(figsize=(8, 1))
 for i, col in enumerate(num_cols):
     plt.subplot(1, 2, i + 1)
     sns.boxplot(df[col], orient="h")
-# plt.show()
+plt.show()
 
 print("#" * 30)
 
@@ -237,7 +235,7 @@ plt.figure(figsize=(8, 1))
 for i, col in enumerate(num_cols):
     plt.subplot(1, 2, i + 1)
     sns.boxplot(df[col], orient="h")
-# plt.show()
+plt.show()
 
 print("#" * 30)
 
@@ -268,7 +266,7 @@ for i, col in enumerate(num_cols):
     plt.subplot(1, 2, i + 1)  # subplot(nrows, ncols, index)
     plt.hist(df[col], edgecolor="yellow")
     plt.title(f"{col} hist_graph")
-# plt.show()
+plt.show()
 
 print("Second Visualization".center(30, "#"))
 
@@ -277,7 +275,7 @@ for i, col in enumerate(num_cols):
     plt.subplot(1, 2, i + 1)
     sns.kdeplot(df[col])
     plt.title(f"{col} KDE plot")
-# plt.show()
+plt.show()
 
 print("#" * 30)
 
@@ -310,7 +308,7 @@ for i, col in enumerate(cat_cols):
     plt.pie(count, labels=categories, startangle=140, autopct="%1.1d%%")
     plt.title(f"{col} Pie Graph")
 plt.subplots_adjust(hspace=0.8, wspace=0.3)
-# plt.show()
+plt.show()
 
 # Very Important NOTE:
 # --------------------
@@ -323,10 +321,10 @@ plt.scatter(df["Age"], df["Fare"])
 plt.title("Age vs. Fare")
 plt.xlabel("Age")
 plt.ylabel("Fare")
-# plt.show()
+plt.show()
 
 sns.pairplot(df)  # اوتوماتيك Numerical Columnsبيجيب ال
-# plt.show()
+plt.show()
 
 # correlation = df.select_dtypes(include="number").var()
 correlation = df.select_dtypes(include="number").corr()
@@ -341,7 +339,7 @@ print(agg)
 plt.figure(figsize=(4, 4))
 agg = df.pivot_table(index="Survived", columns="Sex", values="Age", aggfunc=len)
 sns.heatmap(agg)
-# plt.show()
+plt.show()
 
 print("#" * 30)
 
