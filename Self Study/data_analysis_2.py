@@ -1,11 +1,13 @@
-# Feb 7, 2026
+# Feb 11, 2026 & Feb 12, 2026
 # Made With <3 By Muhammad Walid
 # ------------------------------
 
 import os
 
 # Change The Current Working Directory
-os.chdir(r"C:\Users\Muhammad Walid\Python\DEPI\GIZ4_AIS2_S1_ML\GIZ4_AIS2_S1_ML\Self Study")
+os.chdir(
+    r"C:\Users\Muhammad Walid\Python\DEPI\GIZ4_AIS2_S1_ML\GIZ4_AIS2_S1_ML\Self Study"
+)
 # print(os.getcwd())
 
 data_path = r"C:\Users\Muhammad Walid\Python\DEPI\GIZ4_AIS2_S1_ML\GIZ4_AIS2_S1_ML\Self Study\train.csv"
@@ -178,7 +180,7 @@ plt.figure(figsize=(8, 1))
 for i, col in enumerate(num_cols):
     plt.subplot(1, 2, i + 1)
     sns.boxplot(df[col], orient="h")
-plt.show()
+# plt.show()
 
 print("#" * 30)
 
@@ -235,7 +237,7 @@ plt.figure(figsize=(8, 1))
 for i, col in enumerate(num_cols):
     plt.subplot(1, 2, i + 1)
     sns.boxplot(df[col], orient="h")
-plt.show()
+# plt.show()
 
 print("#" * 30)
 
@@ -253,3 +255,146 @@ print("#" * 30)
 # ----------------------------------------------
 
 print(df.duplicated().sum())
+
+print("#" * 30)
+
+# Ninth thing to do is to DATA VISUALIZATION [9]
+# ----------------------------------------------
+
+print("First Visualization".center(30, "#"))
+
+plt.figure(figsize=(9, 2))
+for i, col in enumerate(num_cols):
+    plt.subplot(1, 2, i + 1)  # subplot(nrows, ncols, index)
+    plt.hist(df[col], edgecolor="yellow")
+    plt.title(f"{col} hist_graph")
+# plt.show()
+
+print("Second Visualization".center(30, "#"))
+
+plt.figure(figsize=(9, 2))
+for i, col in enumerate(num_cols):
+    plt.subplot(1, 2, i + 1)
+    sns.kdeplot(df[col])
+    plt.title(f"{col} KDE plot")
+# plt.show()
+
+print("#" * 30)
+
+# unique = df["Embarked"].value_counts()
+unique = df["Survived"].value_counts()
+# unique = df["Survived"].value_counts().values
+print(unique)
+
+print("=" * 30)
+
+count = unique.values
+print(count)
+
+print("=" * 30)
+
+categories = unique.index
+print(categories)
+
+print("#" * 30)
+
+cat_cols = df.select_dtypes("category").columns
+# print(cat_cols)
+
+plt.figure(figsize=(9, 4))
+for i, col in enumerate(cat_cols):
+    plt.subplot(2, 3, i + 1)
+    unique = df[col].value_counts()
+    count = unique.values
+    categories = unique.index
+    plt.pie(count, labels=categories, startangle=140, autopct="%1.1d%%")
+    plt.title(f"{col} Pie Graph")
+plt.subplots_adjust(hspace=0.8, wspace=0.3)
+# plt.show()
+
+# Very Important NOTE:
+# --------------------
+# If Two Columns are "Numerical" => We will use "Scatter Plot" (Most Common), "Pair Plot", "Line Plot", "Heat Map"
+# If One "Numerical" & One "Categorical" => We will use "Bar Plot"
+# If Two Columns are "Categorical" => We will use "Heat Map"
+
+plt.figure(figsize=(4, 4))
+plt.scatter(df["Age"], df["Fare"])
+plt.title("Age vs. Fare")
+plt.xlabel("Age")
+plt.ylabel("Fare")
+# plt.show()
+
+sns.pairplot(df)  # اوتوماتيك Numerical Columnsبيجيب ال
+# plt.show()
+
+# correlation = df.select_dtypes(include="number").var()
+correlation = df.select_dtypes(include="number").corr()
+print(correlation)
+
+print("#" * 30)
+
+agg = df.pivot_table(index="Survived", columns="Sex", values="Age", aggfunc=len)
+# agg = df.pivot_table(index="Survived", columns="Sex", values="Fare", aggfunc=len)  # Same Result
+print(agg)
+
+plt.figure(figsize=(4, 4))
+agg = df.pivot_table(index="Survived", columns="Sex", values="Age", aggfunc=len)
+sns.heatmap(agg)
+# plt.show()
+
+print("#" * 30)
+
+# Tenth thing to do is to SPLITING DATA [10]
+# ------------------------------------------
+
+x = df.drop(labels=["Survived"], axis=1)
+print(x.head())
+
+print("=" * 30)
+
+y = df["Survived"]
+print(y.head())
+
+print("#" * 30)
+
+# Eleventh thing to do is to NORMALIZATION [11]
+# ---------------------------------------------
+
+from sklearn.preprocessing import MinMaxScaler
+num_cols = x.select_dtypes("number").columns
+# print(num_cols)  # Index(['Age', 'Fare'], dtype='str')
+
+scaler = MinMaxScaler()
+scaler.fit(x[num_cols])
+x[num_cols] = scaler.transform(x[num_cols])
+# print(x[num_cols])
+print(x)
+
+print("#" * 30)
+
+# Twelfth thing to do is to ENCODING [12]
+# ---------------------------------------
+# Encoding Techniques:
+# --------------------
+# [1] OrdinalEncoding:
+#                    Used for "Ordinal" columns
+
+# [2] OneHotEncoding:
+#                   Used for "Nominal" columns with small number of unique values
+
+# [3] BinaryEncoding:
+#                   Used for "Nominal" columns with large number of unique values
+
+# "Nominal": where order of the unique values doesn’t matter; for example, 'Red' is not greater or less than 'Yellow'
+# "Ordinal": where order matters; for example, 'Large' is greater than 'Medium'
+
+# NOTE: In Titanic dataset, 'Sex & Embarked' are both "Nominal" so we will apply "OneHotEncoding"
+
+str_cols = ["Sex", "Embarked"]
+
+from category_encoders import OneHotEncoder
+encoder = OneHotEncoder(cols=str_cols, drop_invariant=True)
+x = encoder.fit_transform(x)
+
+print(x)
