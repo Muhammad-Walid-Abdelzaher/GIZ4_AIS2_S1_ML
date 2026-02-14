@@ -1,0 +1,29 @@
+Problem Solving
+--------------------
+📚 Problem 1
+Website: codewars
+Link: https://www.codewars.com/kata/51c8991dee245d7ddf00000e
+
+📚 Problem 2
+Website: codewars
+Link: https://www.codewars.com/kata/53af2b8861023f1d88000832
+
+📚 Problem 3
+Website: leetcode
+Link: https://leetcode.com/problems/two-sum/description/
+
+📚 Problem 4
+Website: leetcode
+Link: https://leetcode.com/problems/add-two-numbers/description/
+
+📚 Problem 5 
+Website: leetcode
+Link: https://leetcode.com/problems/roman-to-integer/description/
+
+📚 Problem 6 
+Website: leetcode
+Link: https://leetcode.com/problems/search-insert-position/description/
+
+📚 Problem 7 
+Website: leetcode
+Link: https://leetcode.com/problems/basic-calculator-ii/description/?envType=problem-list-v2&envId=math
