@@ -28,7 +28,6 @@ class LinearRegression_muhammad_walid:
         self.w -= self.alpha * dl_dw
         self.b -= self.alpha * dl_db
 
-
         y_hat = (self.w * self.x) + self.b
         sse = np.sum((y_hat - self.y) ** 2)
         self.sse_values = np.append(arr=self.sse_values, values=sse)
@@ -51,40 +50,42 @@ class LinearRegression_muhammad_walid:
                 )
                 print("=" * 30)
 
-        print(f"Optimized Parameters: slope = {self.w:.6f}, Bias = {self.b:.6f}")
+        print(f"Optimized Parameters: slope (theta_1) = {self.w:.6f}, Bias (theta_0) = {self.b:.6f}")
 
     def predict(self, X: list):
         X = np.array(X)
         y_predict = self.w * X + self.b
-        return f"Prediction = {y_predict:.6f}"
+        return y_predict
 
 
-x = np.array([1, 2, 3, 4])
-y = np.array([2, 2.8, 3.6, 4.5])
-# y = np.array([2, 2.2, 3.6, 4.7])
+if __name__ == "__main__":
 
-linear = LinearRegression_muhammad_walid(
-    alpha=0.01, weight=0, bias=0, num_of_iteration=100, x_data=x, y_data=y
-)
+    x = np.array([1, 2, 3, 4])
+    y = np.array([2, 2.8, 3.6, 4.5])
+    # y = np.array([2, 2.2, 3.6, 4.7])
 
-print(linear.mean_squared_error())
+    linear = LinearRegression_muhammad_walid(alpha=0.01, weight=0, bias=0, num_of_iteration=100, x_data=x, y_data=y)
 
-print("#" * 30)
+    print(linear.mean_squared_error())
 
-linear.fit()
+    print("#" * 30)
 
-print("#" * 30)
+    linear.fit()
 
-print(linear.predict(9))
+    print("#" * 30)
 
-plt.figure(figsize=(12, 5))
-plt.subplot(1, 2, 1)
-plt.plot(range(linear.num_of_iterations), linear.sse_values, label="SSE")
-plt.xlabel("Number of Iteration")
-plt.ylabel("SSE")
-plt.title("SSE Over Iteration")
-plt.legend()
-plt.subplot(1, 2, 2)
-plt.scatter(linear.x, linear.y, color="blue", label="Data points")
-plt.plot(linear.x, linear.w * linear.x + linear.b, color="red", label="regression line")
-plt.show()
+    print(linear.predict(9))
+
+    plt.figure(figsize=(12, 5))
+    plt.subplot(1, 2, 1)
+    plt.plot(range(linear.num_of_iterations), linear.sse_values, label="SSE")
+    plt.xlabel("Number of Iteration")
+    plt.ylabel("SSE")
+    plt.title("SSE Over Iteration")
+    plt.legend()
+    plt.subplot(1, 2, 2)
+    plt.scatter(linear.x, linear.y, color="blue", label="Data points")
+    plt.plot(
+        linear.x, linear.w * linear.x + linear.b, color="red", label="regression line"
+    )
+    plt.show()
